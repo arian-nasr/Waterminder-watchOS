@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @Environment(\.scenePhase) private var scenePhase
+    
+    let data = WaterData.shared
+    
     var body: some View {
         Text("Hello, World!")
             .padding()

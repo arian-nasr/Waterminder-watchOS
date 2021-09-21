@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B972826426FA8C5B009B9C5E /* DrinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972826326FA8C5B009B9C5E /* DrinkType.swift */; };
+		B972826626FA8E23009B9C5E /* WaterTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972826526FA8E23009B9C5E /* WaterTrackerView.swift */; };
+		B972826826FA8F98009B9C5E /* DrinkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972826726FA8F98009B9C5E /* DrinkListView.swift */; };
 		B9A193E326FA3F8E0088AF0A /* Waterminder WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B9A193E226FA3F8E0088AF0A /* Waterminder WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B9A193E826FA3F8F0088AF0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9A193E726FA3F8F0088AF0A /* Assets.xcassets */; };
 		B9A193EE26FA3F8F0088AF0A /* Waterminder WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B9A193ED26FA3F8F0088AF0A /* Waterminder WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -17,6 +20,9 @@
 		B9A193FB26FA3F8F0088AF0A /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A193FA26FA3F8F0088AF0A /* ComplicationController.swift */; };
 		B9A193FD26FA3F900088AF0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9A193FC26FA3F900088AF0A /* Assets.xcassets */; };
 		B9A1940026FA3F900088AF0A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9A193FF26FA3F900088AF0A /* Preview Assets.xcassets */; };
+		B9A1941126FA4F8B0088AF0A /* WaterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A1941026FA4F8B0088AF0A /* WaterData.swift */; };
+		B9A1941326FA4FEE0088AF0A /* HealthKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A1941226FA4FEE0088AF0A /* HealthKitController.swift */; };
+		B9A1941526FA83FE0088AF0A /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A1941426FA83FE0088AF0A /* Drink.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +68,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B972826326FA8C5B009B9C5E /* DrinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkType.swift; sourceTree = "<group>"; };
+		B972826526FA8E23009B9C5E /* WaterTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTrackerView.swift; sourceTree = "<group>"; };
+		B972826726FA8F98009B9C5E /* DrinkListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkListView.swift; sourceTree = "<group>"; };
 		B9A193DE26FA3F8E0088AF0A /* Waterminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waterminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9A193E226FA3F8E0088AF0A /* Waterminder WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Waterminder WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9A193E726FA3F8F0088AF0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,6 +84,9 @@
 		B9A193FF26FA3F900088AF0A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B9A1940126FA3F900088AF0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9A1940226FA3F900088AF0A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		B9A1941026FA4F8B0088AF0A /* WaterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterData.swift; sourceTree = "<group>"; };
+		B9A1941226FA4FEE0088AF0A /* HealthKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitController.swift; sourceTree = "<group>"; };
+		B9A1941426FA83FE0088AF0A /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +131,13 @@
 			isa = PBXGroup;
 			children = (
 				B9A193F226FA3F8F0088AF0A /* WaterminderApp.swift */,
+				B972826526FA8E23009B9C5E /* WaterTrackerView.swift */,
+				B9A1941026FA4F8B0088AF0A /* WaterData.swift */,
+				B972826726FA8F98009B9C5E /* DrinkListView.swift */,
 				B9A193F426FA3F8F0088AF0A /* ContentView.swift */,
+				B9A1941426FA83FE0088AF0A /* Drink.swift */,
+				B972826326FA8C5B009B9C5E /* DrinkType.swift */,
+				B9A1941226FA4FEE0088AF0A /* HealthKitController.swift */,
 				B9A193F626FA3F8F0088AF0A /* NotificationController.swift */,
 				B9A193F826FA3F8F0088AF0A /* NotificationView.swift */,
 				B9A193FA26FA3F8F0088AF0A /* ComplicationController.swift */,
@@ -267,9 +285,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9A193F726FA3F8F0088AF0A /* NotificationController.swift in Sources */,
+				B972826626FA8E23009B9C5E /* WaterTrackerView.swift in Sources */,
 				B9A193F526FA3F8F0088AF0A /* ContentView.swift in Sources */,
+				B972826826FA8F98009B9C5E /* DrinkListView.swift in Sources */,
+				B9A1941326FA4FEE0088AF0A /* HealthKitController.swift in Sources */,
 				B9A193FB26FA3F8F0088AF0A /* ComplicationController.swift in Sources */,
+				B9A1941126FA4F8B0088AF0A /* WaterData.swift in Sources */,
 				B9A193F326FA3F8F0088AF0A /* WaterminderApp.swift in Sources */,
+				B9A1941526FA83FE0088AF0A /* Drink.swift in Sources */,
+				B972826426FA8C5B009B9C5E /* DrinkType.swift in Sources */,
 				B9A193F926FA3F8F0088AF0A /* NotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
