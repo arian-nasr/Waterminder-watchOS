@@ -14,8 +14,25 @@ struct ContentView: View {
     let data = WaterData.shared
     
     var body: some View {
-        Text("Hello, World!")
-            .padding()
+        WaterTrackerView()
+            .environmentObject(data)
+            .onChange(of: scenePhase) { (phase) in
+                switch phase {
+                    
+                case .inactive:
+                    print("did nothing")
+                case .active:
+                    let model = WaterData.shared
+                    model.healthKitController.requestAuthorization { (success) in
+                        if !success { fatalError("*** Unable to authenticate HealthKit ***") }
+                        model.healthKitController.loadNewDataFromHealthKit { _ in }
+                    }
+                case .background:
+                    print("did nothing")
+                @unknown default:
+                    print("did nothing")
+                }
+            }
     }
 }
 

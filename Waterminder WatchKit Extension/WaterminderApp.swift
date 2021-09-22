@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct WaterminderApp: App {
+    
+    @WKExtensionDelegateAdaptor private var appDelegate: ExtensionDelegate
+    
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {
