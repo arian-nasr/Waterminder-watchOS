@@ -10,6 +10,7 @@
 		B928465A26FAEA79006D0371 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B928465926FAEA79006D0371 /* ExtensionDelegate.swift */; };
 		B928465C26FAEAE0006D0371 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B928465B26FAEAE0006D0371 /* HostingController.swift */; };
 		B928466026FAEB8E006D0371 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B928465F26FAEB8E006D0371 /* HealthKit.framework */; };
+		B95AFA6426FB8736008CF0FF /* CustomMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95AFA6326FB8736008CF0FF /* CustomMLView.swift */; };
 		B972826426FA8C5B009B9C5E /* DrinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972826326FA8C5B009B9C5E /* DrinkType.swift */; };
 		B972826626FA8E23009B9C5E /* WaterTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972826526FA8E23009B9C5E /* WaterTrackerView.swift */; };
 		B972826826FA8F98009B9C5E /* DrinkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972826726FA8F98009B9C5E /* DrinkListView.swift */; };
@@ -75,6 +76,7 @@
 		B928465B26FAEAE0006D0371 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
 		B928465D26FAEB8E006D0371 /* Waterminder WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Waterminder WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		B928465F26FAEB8E006D0371 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		B95AFA6326FB8736008CF0FF /* CustomMLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMLView.swift; sourceTree = "<group>"; };
 		B972826326FA8C5B009B9C5E /* DrinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkType.swift; sourceTree = "<group>"; };
 		B972826526FA8E23009B9C5E /* WaterTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTrackerView.swift; sourceTree = "<group>"; };
 		B972826726FA8F98009B9C5E /* DrinkListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkListView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				B972826526FA8E23009B9C5E /* WaterTrackerView.swift */,
 				B9A1941026FA4F8B0088AF0A /* WaterData.swift */,
 				B972826726FA8F98009B9C5E /* DrinkListView.swift */,
+				B95AFA6326FB8736008CF0FF /* CustomMLView.swift */,
 				B9A193F426FA3F8F0088AF0A /* ContentView.swift */,
 				B9A1941426FA83FE0088AF0A /* Drink.swift */,
 				B972826326FA8C5B009B9C5E /* DrinkType.swift */,
@@ -314,6 +317,7 @@
 				B9A193FB26FA3F8F0088AF0A /* ComplicationController.swift in Sources */,
 				B9A1941126FA4F8B0088AF0A /* WaterData.swift in Sources */,
 				B9A193F326FA3F8F0088AF0A /* WaterminderApp.swift in Sources */,
+				B95AFA6426FB8736008CF0FF /* CustomMLView.swift in Sources */,
 				B9A1941526FA83FE0088AF0A /* Drink.swift in Sources */,
 				B972826426FA8C5B009B9C5E /* DrinkType.swift in Sources */,
 				B9A193F926FA3F8F0088AF0A /* NotificationView.swift in Sources */,

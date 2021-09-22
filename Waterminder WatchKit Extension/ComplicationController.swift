@@ -49,7 +49,9 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
         // Call the handler with the timeline entries after the given date
-        handler(nil)
+        var entries = [CLKComplicationTimelineEntry]()
+        entries.append(createTimelineEntry(forComplication: complication, date: date))
+        handler(entries)
     }
 
     // MARK: - Sample Templates
@@ -114,13 +116,13 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // Return a modular large template.
     private func createModularLargeTemplate(forDate date: Date) -> CLKComplicationTemplate {
         // Create the data providers.
-        let titleTextProvider = CLKSimpleTextProvider(text: "Coffee Tracker", shortText: "Coffee")
+        let titleTextProvider = CLKSimpleTextProvider(text: "Water Tracker", shortText: "Water")
 
-        let mgCaffeineProvider = CLKSimpleTextProvider(text: data.mgCaffeineString(atDate: date))
-        let mgUnitProvider = CLKSimpleTextProvider(text: "mg Caffeine", shortText: "mg")
+        let mgCaffeineProvider = CLKSimpleTextProvider(text: String(data.mlWater(atDate: date)))
+        let mgUnitProvider = CLKSimpleTextProvider(text: "mL Water", shortText: "mL")
         let combinedMGProvider = CLKTextProvider(format: "%@ %@", mgCaffeineProvider, mgUnitProvider)
                
-        let numberOfCupsProvider = CLKSimpleTextProvider(text: data.totalCupsTodayString)
+        let numberOfCupsProvider = CLKSimpleTextProvider(text: String(data.totalCupsToday))
         let cupsUnitProvider = CLKSimpleTextProvider(text: "Cups", shortText: "C")
         let combinedCupsProvider = CLKTextProvider(format: "%@ %@", numberOfCupsProvider, cupsUnitProvider)
         
@@ -137,8 +139,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         // Create the data providers.
         let flatUtilitarianImageProvider = CLKImageProvider(onePieceImage: #imageLiteral(resourceName: "CoffeeSmallFlat"))
         
-        let mgCaffeineProvider = CLKSimpleTextProvider(text: data.mgCaffeineString(atDate: date))
-        let mgUnitProvider = CLKSimpleTextProvider(text: "mg Caffeine", shortText: "mg")
+        let mgCaffeineProvider = CLKSimpleTextProvider(text: String(data.mlWater(atDate: date)))
+        let mgUnitProvider = CLKSimpleTextProvider(text: "mL Water", shortText: "mL")
         let combinedMGProvider = CLKTextProvider(format: "%@ %@", mgCaffeineProvider, mgUnitProvider)
         
         // Create the template using the providers.
@@ -151,8 +153,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         // Create the data providers.
         let flatUtilitarianImageProvider = CLKImageProvider(onePieceImage: #imageLiteral(resourceName: "CoffeeSmallFlat"))
         
-        let mgCaffeineProvider = CLKSimpleTextProvider(text: data.mgCaffeineString(atDate: date))
-        let mgUnitProvider = CLKSimpleTextProvider(text: "mg Caffeine", shortText: "mg")
+        let mgCaffeineProvider = CLKSimpleTextProvider(text: String(data.mlWater(atDate: date)))
+        let mgUnitProvider = CLKSimpleTextProvider(text: "mL Water", shortText: "mL")
         let combinedMGProvider = CLKTextProvider(format: "%@ %@", mgCaffeineProvider, mgUnitProvider)
         
         // Create the template using the providers.
@@ -163,8 +165,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // Return a circular small template.
     private func createCircularSmallTemplate(forDate date: Date) -> CLKComplicationTemplate {
         // Create the data providers.
-        let mgCaffeineProvider = CLKSimpleTextProvider(text: data.mgCaffeineString(atDate: date))
-        let mgUnitProvider = CLKSimpleTextProvider(text: "mg Caffeine", shortText: "mg")
+        let mgCaffeineProvider = CLKSimpleTextProvider(text: String(data.mlWater(atDate: date)))
+        let mgUnitProvider = CLKSimpleTextProvider(text: "mL Water", shortText: "mL")
         
         // Create the template using the providers.
         return CLKComplicationTemplateCircularSmallStackText(line1TextProvider: mgCaffeineProvider,
@@ -174,8 +176,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // Return an extra large template.
     private func createExtraLargeTemplate(forDate date: Date) -> CLKComplicationTemplate {
         // Create the data providers.
-        let mgCaffeineProvider = CLKSimpleTextProvider(text: data.mgCaffeineString(atDate: date))
-        let mgUnitProvider = CLKSimpleTextProvider(text: "mg")
+        let mgCaffeineProvider = CLKSimpleTextProvider(text: String(data.mlWater(atDate: date)))
+        let mgUnitProvider = CLKSimpleTextProvider(text: "mL")
         
         // Create the template using the providers.
         return CLKComplicationTemplateExtraLargeStackText(line1TextProvider: mgCaffeineProvider,
@@ -186,17 +188,17 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     private func createGraphicCornerTemplate(forDate date: Date) -> CLKComplicationTemplate {
         // Create the data providers.
         let leadingValueProvider = CLKSimpleTextProvider(text: "0")
-        leadingValueProvider.tintColor = data.color(forCaffeineDose: 0.0)
+        leadingValueProvider.tintColor = data.color(forWaterDose: 0.0)
         
         let trailingValueProvider = CLKSimpleTextProvider(text: "500")
-        trailingValueProvider.tintColor = data.color(forCaffeineDose: 500.0)
+        trailingValueProvider.tintColor = data.color(forWaterDose: 500.0)
         
-        let mgCaffeineProvider = CLKSimpleTextProvider(text: data.mgCaffeineString(atDate: date))
-        let mgUnitProvider = CLKSimpleTextProvider(text: "mg Caffeine", shortText: "mg")
-        mgUnitProvider.tintColor = data.color(forCaffeineDose: data.mgCaffeine(atDate: date))
+        let mgCaffeineProvider = CLKSimpleTextProvider(text: String(data.mlWater(atDate: date)))
+        let mgUnitProvider = CLKSimpleTextProvider(text: "mL Water", shortText: "mL")
+        mgUnitProvider.tintColor = data.color(forWaterDose: data.mlWater(atDate: date))
         let combinedMGProvider = CLKTextProvider(format: "%@ %@", mgCaffeineProvider, mgUnitProvider)
         
-        let percentage = Float(min(data.mgCaffeine(atDate: date) / 500.0, 1.0))
+        let percentage = Float(min(data.mlWater(atDate: date) / 500.0, 1.0))
         let gaugeProvider = CLKSimpleGaugeProvider(style: .fill,
                                                    gaugeColors: [.green, .yellow, .red],
                                                    gaugeColorLocations: [0.0, 300.0 / 500.0, 450.0 / 500.0] as [NSNumber],
@@ -212,15 +214,15 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // Return a graphic circle template.
     private func createGraphicCircleTemplate(forDate date: Date) -> CLKComplicationTemplate {
         // Create the data providers.
-        let percentage = Float(min(data.mgCaffeine(atDate: date) / 500.0, 1.0))
+        let percentage = Float(min(data.mlWater(atDate: date) / 500.0, 1.0))
         let gaugeProvider = CLKSimpleGaugeProvider(style: .fill,
                                                    gaugeColors: [.green, .yellow, .red],
                                                    gaugeColorLocations: [0.0, 300.0 / 500.0, 450.0 / 500.0] as [NSNumber],
                                                    fillFraction: percentage)
         
-        let mgCaffeineProvider = CLKSimpleTextProvider(text: data.mgCaffeineString(atDate: date))
-        let mgUnitProvider = CLKSimpleTextProvider(text: "mg Caffeine", shortText: "mg")
-        mgUnitProvider.tintColor = data.color(forCaffeineDose: data.mgCaffeine(atDate: date))
+        let mgCaffeineProvider = CLKSimpleTextProvider(text: String(data.mlWater(atDate: date)))
+        let mgUnitProvider = CLKSimpleTextProvider(text: "mL Water", shortText: "mL")
+        mgUnitProvider.tintColor = data.color(forWaterDose: data.mlWater(atDate: date))
         
         // Create the template using the providers.
         return CLKComplicationTemplateGraphicCircularOpenGaugeSimpleText(gaugeProvider: gaugeProvider,
@@ -232,14 +234,14 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     private func createGraphicRectangularTemplate(forDate date: Date) -> CLKComplicationTemplate {
         // Create the data providers.
         let imageProvider = CLKFullColorImageProvider(fullColorImage: #imageLiteral(resourceName: "CoffeeGraphicRectangular"))
-        let titleTextProvider = CLKSimpleTextProvider(text: "Coffee Tracker", shortText: "Coffee")
+        let titleTextProvider = CLKSimpleTextProvider(text: "Water Tracker", shortText: "Water")
         
-        let mgCaffeineProvider = CLKSimpleTextProvider(text: data.mgCaffeineString(atDate: date))
-        let mgUnitProvider = CLKSimpleTextProvider(text: "mg Caffeine", shortText: "mg")
-        mgUnitProvider.tintColor = data.color(forCaffeineDose: data.mgCaffeine(atDate: date))
+        let mgCaffeineProvider = CLKSimpleTextProvider(text: String(data.mlWater(atDate: date)))
+        let mgUnitProvider = CLKSimpleTextProvider(text: "mL Water", shortText: "mL")
+        mgUnitProvider.tintColor = data.color(forWaterDose: data.mlWater(atDate: date))
         let combinedMGProvider = CLKTextProvider(format: "%@ %@", mgCaffeineProvider, mgUnitProvider)
         
-        let percentage = Float(min(data.mgCaffeine(atDate: date) / 500.0, 1.0))
+        let percentage = Float(min(data.mlWater(atDate: date) / 500.0, 1.0))
         let gaugeProvider = CLKSimpleGaugeProvider(style: .fill,
                                                    gaugeColors: [.green, .yellow, .red],
                                                    gaugeColorLocations: [0.0, 300.0 / 500.0, 450.0 / 500.0] as [NSNumber],
@@ -260,12 +262,12 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         let circle = CLKComplicationTemplateGraphicCircularImage(imageProvider: CLKFullColorImageProvider(fullColorImage: #imageLiteral(resourceName: "CoffeeGraphicCircular")))
         
         // Create the text provider.
-        let mgCaffeineProvider = CLKSimpleTextProvider(text: data.mgCaffeineString(atDate: date))
-        let mgUnitProvider = CLKSimpleTextProvider(text: "mg Caffeine", shortText: "mg")
-        mgUnitProvider.tintColor = data.color(forCaffeineDose: data.mgCaffeine(atDate: date))
+        let mgCaffeineProvider = CLKSimpleTextProvider(text: String(data.mlWater(atDate: date)))
+        let mgUnitProvider = CLKSimpleTextProvider(text: "mL Water", shortText: "mL")
+        mgUnitProvider.tintColor = data.color(forWaterDose: data.mlWater(atDate: date))
         let combinedMGProvider = CLKTextProvider(format: "%@ %@", mgCaffeineProvider, mgUnitProvider)
                
-        let numberOfCupsProvider = CLKSimpleTextProvider(text: data.totalCupsTodayString)
+        let numberOfCupsProvider = CLKSimpleTextProvider(text: String(data.totalCupsToday))
         let cupsUnitProvider = CLKSimpleTextProvider(text: "Cups", shortText: "C")
         cupsUnitProvider.tintColor = data.color(forTotalCups: data.totalCupsToday)
         let combinedCupsProvider = CLKTextProvider(format: "%@ %@", numberOfCupsProvider, cupsUnitProvider)
@@ -285,17 +287,17 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     private func createGraphicExtraLargeTemplate(forDate date: Date) -> CLKComplicationTemplate {
         
         // Create the data providers.
-        let percentage = Float(min(data.mgCaffeine(atDate: date) / 500.0, 1.0))
+        let percentage = Float(min(data.mlWater(atDate: date) / 500.0, 1.0))
         let gaugeProvider = CLKSimpleGaugeProvider(style: .fill,
                                                    gaugeColors: [.green, .yellow, .red],
                                                    gaugeColorLocations: [0.0, 300.0 / 500.0, 450.0 / 500.0] as [NSNumber],
                                                    fillFraction: percentage)
         
-        let mgCaffeineProvider = CLKSimpleTextProvider(text: data.mgCaffeineString(atDate: date))
+        let mgCaffeineProvider = CLKSimpleTextProvider(text: String(data.mlWater(atDate: date)))
         
         return CLKComplicationTemplateGraphicExtraLargeCircularOpenGaugeSimpleText(
             gaugeProvider: gaugeProvider,
-            bottomTextProvider: CLKSimpleTextProvider(text: "mg"),
+            bottomTextProvider: CLKSimpleTextProvider(text: "mL"),
             centerTextProvider: mgCaffeineProvider)
     }
 }
